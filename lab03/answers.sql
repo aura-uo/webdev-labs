@@ -78,3 +78,5 @@ set email = 'knick2022@gmail.com'
 where id = 26;
 
 -- Exercise 14
+
+select * from following;

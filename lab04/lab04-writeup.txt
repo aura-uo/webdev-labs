@@ -1,0 +1,9 @@
+What is the value of SQLAlchemy?
+It makes it easier to interact with SQL databases by introducing a Python abstraction with object-relation mapping. This is useful when development programs that need to interact with databases since it can all be done in a very Pythonic way compared to doing so without SQLAlchemy.
+
+What is a model?
+Python classes used to represent SQL tables.
+
+What is a view?
+A view is a functionality that runs when an access point/route in one's app or website is hit. In Flask's case, they're just functions that are called when the user searches for a specific url in our site/app.
+
