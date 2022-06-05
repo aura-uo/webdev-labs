@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import LikeButton from "./LikeButton";
 import BookmarkButton from "./BookmarkButton";
 import Comments from "./Comments";
+import AddComment from "./AddComment";
 import { getHeaders } from "../utils";
 
 const Post = ({post}) => {
@@ -14,7 +15,7 @@ const Post = ({post}) => {
             headers: getHeaders(),
         })
         .then(response => response.json())
-        .then(data => { setNewPost(data) });
+        .then(data => setNewPost(data));
     }
 
     if (post) {
@@ -49,16 +50,19 @@ const Post = ({post}) => {
                                 redraw={redraw}
                             />    
                         </div>
-                        <p>{ newPost.caption }</p>
+                        <p className="likes">
+                            <strong>
+                                {newPost.likes.length === 1 ? `1 like`: `${newPost.likes.length} likes`}
+                            </strong>
+                        </p>
+                        <div>
+                            <p><strong>{newPost.user.username}</strong> { newPost.caption }</p>
+                            <p className="timestamp">{ newPost.display_time }</p>
+                        </div>
                         <div className="comments">
                             <Comments comments={ newPost.comments }/>
                         </div>
-                        <div>
-                            <i className="far fa-face-smile"></i>
-                            <div className="add-comment">
-                                <input className="input-holder" type="text"></input>
-                            </div>
-                        </div>
+                        <AddComment postId={newPost.id} redraw={redraw}/>
                     </div>
             </div>
         )

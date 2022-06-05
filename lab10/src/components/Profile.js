@@ -1,25 +1,28 @@
 import React, {useState, useEffect} from 'react';
+import { getHeaders } from '../utils';
 
 const Profile = () => {
     const [profile, setProfile] = useState(null);
 
     useEffect(() => {
-        // Your code here
-      }, [profile]);
+        const url = '/api/profile/'
+        fetch(url, {
+            method: "GET",
+            headers: getHeaders(),
+        })
+        .then(response => response.json())
+        .then(data => setProfile(data));
+    }, []);
 
     if (!profile) {
         return (
-            <div>Before Profile fetched from server</div>  
+            <div>Loading...</div>  
         );
     }
     return (
-        <div>
-            <div>List of Profile goes here...</div>
-            {/*
-            this.state.Profile.map(post => {
-                return <Post post={post} key={'post-' + post.id} />
-            }
-            */}
+        <div class="sug-user">
+            <img src={profile.thumb_url} alt="profile pic" />
+            <h1>{profile.username}</h1>
         </div>
     );     
 }

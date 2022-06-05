@@ -10,11 +10,7 @@ class App extends React.Component {
     render () {
         return (
             <div>
-                <nav className="main-nav">
-                    <h1>Photo App</h1>
-                    <Navbar title="Photo App" username="test_user"/>
-                </nav>
-
+                <Navbar title="Photo App"/>
                 <aside>
                     <header>
                         <Profile/>
